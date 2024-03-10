@@ -9,6 +9,7 @@ public class Display {
     }
 
     public void displayAllUltraman() {
+        //menghitung lebar judul tabel
         int namaWidth = 20; // Panjang minimum untuk judul Nama
         int umurWidth = 6; // Panjang minimum untuk judul Umur
         int tinggiWidth = 6; // Panjang minimum untuk judul Tinggi
@@ -25,20 +26,40 @@ public class Display {
             kousenWidth = Math.max(kousenWidth, ultraman.getKousen().length());
             eraWidth = Math.max(eraWidth, ultraman.getEra().length());
         }
-        int total = namaWidth + umurWidth + tinggiWidth + hostWidth + beratWidth + kousenWidth +eraWidth;
+        
+        //menghitung total lebar tabel
+        int total = namaWidth + umurWidth + tinggiWidth + hostWidth + beratWidth + kousenWidth +eraWidth + 36;
         String horizontalLine = "";
         String horizontalLine2 = "";
-        for (int i = 0; i < total; i++) {
+        String space = "";
+        String space2 = "";
+        for (int i = 0; i < total; i++) {//menambahlan "=" dan "-" sebagai garis tabel
             horizontalLine += "=";
             horizontalLine2 += "-";
         }
-        if (ultramanList.isEmpty()) {
+        
+        //menambahkan spasi dalam main header tabel
+        if(total % 2 == 0) {//jika total lebar tabel genap
+            for (int i = 0; i < total/2-18; i++) {
+                space += " ";//menambahkan karakter kosong/spasi setiap perulangan
+                space2 = space;//memasukkan nilai space kedalam space2
+            }
+        }else{//jika total lebar tabel ganjil
+            for (int i = 0; i < total/2-18; i++) {
+                space += " ";
+                space2 = space;
+            }
+            space2 += " ";
+        }
+    
+        if (ultramanList.isEmpty()) {//jika array kosong
             System.out.println("Data Kosong, Mohon Mengisi data terlebih dahulu");
-        } else {
+        } else {//jika array tidak kosong
+            //output main header
             System.out.println(horizontalLine);
-            System.out.println("|                                       Ultraman List                                              |");
+            System.out.println("|"+space+"List Ultraman di Planet Nebula M78"+space2+"|");
             System.out.println(horizontalLine);
-            System.out.printf(
+            System.out.printf(//output judul tabel
                     "| %-4s | %-" + (namaWidth + 1) + "s | %-" + (umurWidth + 1) + "s | %-" + (tinggiWidth + 1)
                             + "s | %-" + (beratWidth + 1)
                             + "s | %-" + (hostWidth + 1) + "s | %-" + (kousenWidth + 1) + "s | %-" + (eraWidth + 1)
@@ -46,7 +67,7 @@ public class Display {
                     "No.", "Nama", "Umur", "Tinggi", "Berat", "Human Host", "Kousen", "Era");
 
             int i = 0;
-            for (Ultraman ultraman : ultramanList) {
+            for (Ultraman ultraman : ultramanList) {//output isi tabel
                 i++;
                 System.out.println(horizontalLine2);
                 System.out.printf(

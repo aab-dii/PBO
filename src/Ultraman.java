@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
 public class Ultraman {
+    //inisialisasi variabel
     int umur, tinggi, berat, kecepatan;
     String nama, human_host, kousen, era;
 
+    //konstruktor
     public Ultraman(int umur, int tinggi, int berat, int kecepatan,String nama, String human_host, String kousen, String era) {
         this.setUmur(umur);
         this.setTinggi(tinggi);
@@ -35,7 +37,6 @@ public class Ultraman {
     public String getNama() {
         return nama;
     }
-
 
     public String getHuman_host() {
         return human_host;
@@ -81,13 +82,5 @@ public class Ultraman {
     public void setNama(String nama) {
         this.nama = nama;
     }
-    
-   public class Check {
-        public boolean isValidIndex(int index, ArrayList<Ultraman> ultramanList) {
-            return index >= 0 && index < ultramanList.size();
-        }
-    }
-    
-
-
+        
 }
